@@ -1,0 +1,53 @@
+{
+    "type": "experiment",
+    "short-name": "matjuice-thesis-experiment",
+    "configuration": {
+        "benchmarks": [
+            "babai",
+            "bubble",
+            "capr",
+            "clos",
+            "collatz",
+            "crni",
+            "dich",
+            "fdtd",
+            "fft",
+            "fiff",
+            "lgdr",
+            "makechange",
+            "matmul",
+            "mcpi",
+            "nb1d",
+            "numprime"
+        ],
+        "compilers": ["matlab-concat", "matjuice"],
+        "environments": ["matlab-vm", "chrome", "firefox"],
+        "implementations": ["matlab"]
+    },
+    "dependencies": [
+        "https://github.com/Sable/babai-benchmark.git",
+        "https://github.com/Sable/bubble-benchmark.git",
+        "https://github.com/Sable/capr-benchmark.git",
+        "https://github.com/Sable/clos-benchmark.git",
+        "https://github.com/Sable/collatz-benchmark.git",
+        "https://github.com/Sable/crni-benchmark.git",
+        {
+            "source": "https://github.com/Sable/dirich-benchmark.git",
+            "short-name": "dich"
+        },
+        "https://github.com/Sable/fdtd-benchmark.git",
+        "https://github.com/Sable/fft-benchmark.git",
+        "https://github.com/Sable/fiff-benchmark.git",
+        "https://github.com/Sable/lgdr-benchmark.git",
+        "https://github.com/Sable/makechange-benchmark.git",
+        "https://github.com/Sable/matmul-benchmark.git",
+        "https://github.com/Sable/mcpi-benchmark.git",
+        "https://github.com/Sable/nb1d-benchmark.git",
+        "https://github.com/Sable/numprime-benchmark.git",
+        "https://github.com/Sable/ostrich-matlab-environment.git",
+        "https://github.com/Sable/ostrich-matlab-concatenate-compiler.git",
+        "https://github.com/Sable/matjuice-compiler.git",
+        "https://github.com/Sable/ostrich-chrome-environment.git",
+        "https://github.com/Sable/ostrich-firefox-environment.git"
+    ]
+}
