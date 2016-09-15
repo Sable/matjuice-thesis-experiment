@@ -2,9 +2,14 @@
 
 Summary: The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by additional factor or 2-4x. The exact cause will be investigated.
 
-Notes regarding the benchmark implementations:
+Notes regarding the benchmark implementations used:
 
-Additional notes: All the benchmarks used in the thesis, which were part of the Ostrich2 suite, were each migrated to their own independent repository to take advantage of Wu-Wei automatically installation capabilities. This will ease the replication of some specific results without having to rerun all the tests. It will be used to improve the performance of the generated code on the slowest benchmarks.
+* The babai algorithm expects a triangular matrix but triu() is not supported by Matjuice. The results were obtained by removing the triu() call and using directly the matrix of random values. Moreover, randn() in Matjuice does not return numbers according to the normal distribution. It returns numbers according to the uniform distribution (it returns the same numbers as rand()). Although the result computed is not meaningful it seems the number of operations performed is the same, therefore the performance result should not be affected. This will be confirmed once triu() and randn() are implemented in Matjuice.
+* The fdtd algorithm 
+* fft
+* dich
+
+Additional notes: All the benchmarks used in the thesis, which were part of the Ostrich2 suite, were each migrated to their own independent repository to take advantage of Wu-Wei automatic installation capabilities. This will ease the replication of some specific results without having to rerun all the tests. It will be used to improve the performance of the generated code on the slowest benchmarks.
 
 
 ### Invariants (configuration parameters that are the same for all runs) ###
