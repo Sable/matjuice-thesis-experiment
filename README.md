@@ -1,6 +1,6 @@
 # Replication of the performance experiments with Matjuice from Vincent Foley-Bourgon's Master Thesis and DLS paper
 
-Summary: The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by additional factor or 2-4x. The exact cause will be investigated.
+Summary: The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by an additional factor or 2-4x. The exact cause will be investigated.
 
 Notes regarding the benchmark implementations used:
 
