@@ -36,7 +36,10 @@
             "short-name": "dich"
         },
         "https://github.com/Sable/fdtd-benchmark.git",
-        "https://github.com/Sable/fft-benchmark.git",
+        {
+            "source": "https://github.com/Sable/fft-simple-benchmark.git",
+            "short-name": "fft"
+        },
         "https://github.com/Sable/fiff-benchmark.git",
         "https://github.com/Sable/lgdr-benchmark.git",
         "https://github.com/Sable/makechange-benchmark.git",
