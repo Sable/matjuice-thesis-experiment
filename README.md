@@ -1,10 +1,10 @@
-# Replication of the performance experiments with Matjuice from Vincent Foley-Bourgon's Master Thesis and DLS paper
+# Independent replication of the performance experiments of Matjuice from Vincent Foley-Bourgon's Master Thesis
 
 Summary: The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by an additional factor or 2-4x. The exact cause will be investigated.
 
 Notes regarding the benchmark implementations used:
 
-* The babai algorithm expects a triangular matrix but triu() is not supported by Matjuice. The results were obtained by removing the triu() call and using directly the matrix of random values. Moreover, randn() in Matjuice does not return numbers according to the normal distribution. It returns numbers according to the uniform distribution (it returns the same numbers as rand()). Although the result computed is not meaningful it seems the number of operations performed is the same, therefore the performance result should not be affected. This will be confirmed once triu() and randn() are implemented in Matjuice.
+* The babai algorithm expects a triangular matrix but triu() is not supported by Matjuice. The results were obtained by removing the triu() call and using directly the matrix of random values. Moreover, randn() in Matjuice does not return numbers according to the normal distribution. It returns numbers according to the uniform distribution (it returns the same numbers as rand()). Although the result computed is not meaningful it seems the number of operations performed is the same, therefore the performance result should not be affected. This will be confirmed once triu() and randn() are implemented in Matjuice. To run the benchmark with Matjuice you therefore need to modify the current implementation to remove the triu() call and remove the output to deactivate the correctness check;
 * The fdtd algorithm 
 * fft
 * dich
@@ -172,40 +172,3 @@ Reference (used for computing the ratio):
 | numprime   | matjuice | chrome      | 0.09x    |
 | numprime   | matjuice | firefox     | 0.10x    |
 | numprime   | matjuice | node        | 0.09x    |
-
-
-# Upcoming DLS 2016 Paper
-
-### Invariants (configuration parameters that are the same for all runs) ###
-
-| category       | short-name |
-| -------------- | ---------- |
-| implementation | matlab     |
-| platform       | mba-2011   |
-| input-size     | medium     |
-Ratio:
-    slowdown = mean-time / (reference mean-time)
-Reference (used for computing the ratio):
-    compiler: matjuice
-    environment: node
-
-### Results ###
-
-| benchmark  | compiler      | environment | slowdown |
-| ---------- | ------------- | ----------- | -------- |
-| babai      | matlab-concat | matlab-vm   | 0.12x    |
-| bubble     | matlab-concat | matlab-vm   | 3.45x    |
-| capr       | matlab-concat | matlab-vm   | 3.46x    |
-| clos       | matlab-concat | matlab-vm   | 0.00x    |
-| collatz    | matlab-concat | matlab-vm   | 2.50x    |
-| crni       | matlab-concat | matlab-vm   | 0.24x    |
-| dich       | matlab-concat | matlab-vm   | 2.14x    |
-| fdtd       | matlab-concat | matlab-vm   | 0.00x    |
-| fft        | matlab-concat | matlab-vm   | 3.53x    |
-| fiff       | matlab-concat | matlab-vm   | 3.72x    |
-| lgdr       | matlab-concat | matlab-vm   | 0.30x    |
-| makechange | matlab-concat | matlab-vm   | 3.94x    |
-| matmul     | matlab-concat | matlab-vm   | 6.99x    |
-| mcpi       | matlab-concat | matlab-vm   | 0.61x    |
-| nb1d       | matlab-concat | matlab-vm   | 0.28x    |
-| numprime   | matlab-concat | matlab-vm   | 11.11x   |
