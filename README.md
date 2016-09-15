@@ -2,11 +2,13 @@
 
 The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by an additional factor or 2-4x. The exact cause will be investigated.
 
+I took all the benchmarks that were used, which were part of the Ostrich2 (https://github.com/Sable/Ostrich2) suite, ported them each to independent github repositories to track their evolution independently and facilitate their independent reuse in various context. For most of them, I also added code to automatically verify that the benchmark output is similar for all executions. In some cases that meant ignoring the least significant digits of floating-point numbers to account for different rounding errors, probably coming for different execution orders between the runs coming from different configurations.
+
 Notes regarding the benchmark implementations used:
 
 * The babai algorithm expects a triangular matrix but triu() is not supported by Matjuice. The results were obtained by removing the triu() call and using directly the matrix of random values. Moreover, randn() in Matjuice does not return numbers according to the normal distribution. It returns numbers according to the uniform distribution (it returns the same numbers as rand()). Although the result computed is not meaningful it seems the number of operations performed is the same, therefore the performance result should not be affected. This will be confirmed once triu() and randn() are implemented in Matjuice. To run the benchmark with Matjuice you therefore need to modify the current implementation to remove the triu() call; 
 * Also regarding the babai matlab implementation: when it is executed on Mathworks' MATLAB environment with the medium size (used for the performance evaluation) the output vector is composed of NaN results. The problem does not manifest with a small input size. The input should therefore be conditioned to return something meaningful, otherwise I am not sure whether the performance results are meaningful. The same problem happens with the version compiled with Matjuice. Since the output is not meaningful I did not add the output verification check when creating [this version](https://github.com/Sable/babai-benchmark). That should be fixed eventually;
-* The fdtd algorithm 
+* In the fdtd benchmark, I could not use the verification of the output with Matjuice because a bug in the IntegerOk analysis of McLabCore is triggered when one of the output of the function is used, even if it is for a simple display. The computation of the checksum and the verification of the output needs to be commented to compile it with Matjuice.
 * fft
 * dich
 
