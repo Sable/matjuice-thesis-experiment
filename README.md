@@ -1,13 +1,35 @@
-# matjuice-thesis-experiment
-Replication of the performance experiments in Vincent Foley-Bourgon's Master Thesis.
+# Replication of the performance experiments with Matjuice from Vincent Foley-Bourgon's Master Thesis and DLS paper
+
+Summary: The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by additional factor or 2-4x. The exact cause will be investigated.
+
+Notes regarding the benchmark implementations:
+
+Additional notes: All the benchmarks used in the thesis, which were part of the Ostrich2 suite, were each migrated to their own independent repository to take advantage of Wu-Wei automatically installation capabilities. This will ease the replication of some specific results without having to rerun all the tests. It will be used to improve the performance of the generated code on the slowest benchmarks.
+
 
 ### Invariants (configuration parameters that are the same for all runs) ###
+
 
 | category       | short-name |
 | -------------- | ---------- |
 | implementation | matlab     |
 | platform       | mba-2011   |
 | input-size     | medium     |
+
+Platform:
+
+    {
+    	"type": "platform",
+    	"short-name": "mba-2011",
+    	"name": "Darwin-15.6.0-x86_64-i386-64bit",
+    	"cpu": "Intel Core i7",
+    	"gpu": "Intel HD Graphics 3000",
+    	"memory": "4 GB",
+    	"os": "Mac OS X 10.11.6",
+    	"supported-languages": ["x86_64"],
+    	"supported-formats": ["binary"],
+    	"environments": []
+    }
 
 ### Results ###
 
@@ -145,3 +167,40 @@ Reference (used for computing the ratio):
 | numprime   | matjuice | chrome      | 0.09x    |
 | numprime   | matjuice | firefox     | 0.10x    |
 | numprime   | matjuice | node        | 0.09x    |
+
+
+# Upcoming DLS 2016 Paper
+
+### Invariants (configuration parameters that are the same for all runs) ###
+
+| category       | short-name |
+| -------------- | ---------- |
+| implementation | matlab     |
+| platform       | mba-2011   |
+| input-size     | medium     |
+Ratio:
+    slowdown = mean-time / (reference mean-time)
+Reference (used for computing the ratio):
+    compiler: matjuice
+    environment: node
+
+### Results ###
+
+| benchmark  | compiler      | environment | slowdown |
+| ---------- | ------------- | ----------- | -------- |
+| babai      | matlab-concat | matlab-vm   | 0.12x    |
+| bubble     | matlab-concat | matlab-vm   | 3.45x    |
+| capr       | matlab-concat | matlab-vm   | 3.46x    |
+| clos       | matlab-concat | matlab-vm   | 0.00x    |
+| collatz    | matlab-concat | matlab-vm   | 2.50x    |
+| crni       | matlab-concat | matlab-vm   | 0.24x    |
+| dich       | matlab-concat | matlab-vm   | 2.14x    |
+| fdtd       | matlab-concat | matlab-vm   | 0.00x    |
+| fft        | matlab-concat | matlab-vm   | 3.53x    |
+| fiff       | matlab-concat | matlab-vm   | 3.72x    |
+| lgdr       | matlab-concat | matlab-vm   | 0.30x    |
+| makechange | matlab-concat | matlab-vm   | 3.94x    |
+| matmul     | matlab-concat | matlab-vm   | 6.99x    |
+| mcpi       | matlab-concat | matlab-vm   | 0.61x    |
+| nb1d       | matlab-concat | matlab-vm   | 0.28x    |
+| numprime   | matlab-concat | matlab-vm   | 11.11x   |
