@@ -2,7 +2,7 @@
 
 ## Summary 
 
-The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis and the DLS paper. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by an additional factor or 2-6x. The exact cause will be investigated. Of the 16 benchmarks investigated, Matjuice produces a different result than Mathworks' MATLAB on only one benchmark, crni. On the one hand, it means that care was taken to make sure the translation was correct because most of the benchmarks execute correctly. On the other hand, it shows that to ensure that our translations are fully correct we do need automatic correctness tests, both in a standalone test suite and as part of our benchmark suite. This will ensure that we produce tools of the highest quality.
+The performance results obtained on a less powerful machine, the 2011 Macbook Air model, are congruent with the results published in the Master Thesis. The benchmarks on which the code produced by Matjuice is slowest (clos, fdtd) are slower by an additional factor or 2-6x. The exact cause will be investigated. Of the 16 benchmarks investigated, Matjuice produces a different result than Mathworks' MATLAB on only one benchmark, crni. On the one hand, it means that care was taken to make sure the translation was correct because most of the benchmarks execute correctly. On the other hand, it shows that to ensure that our translations are fully correct we do need automatic correctness tests, both in a standalone test suite and as part of our benchmark suite. This will ensure that we produce tools of the highest quality.
 
 ## Methodology 
 
